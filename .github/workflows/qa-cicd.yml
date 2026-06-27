@@ -135,20 +135,20 @@ jobs:
 
       - name: Fail build on High/Criticial Vulnerabilities Json
         run: |
-         trivy fs ./client \
-          --format: json \
-          --output: client-trivy-scan-report.json
-          --severity: HIGH,CRITICAL \
-          --ignore-unfixed: true \
-          --exit-code: 0
+          trivy fs ./client \
+            --format json \
+            --output client-trivy-scan-report.json \
+            --severity HIGH,CRITICAL \
+            --ignore-unfixed \
+            --exit-code 0
 
       - name: Fail build on High/Criticial Vulnerabilities Table
         run: |
          trivy fs ./client \
-          --format: table \
-          --severity: HIGH,CRITICAL \
-          --ignore-unfixed: true \
-          --exit-code: 0 > client-trivy-scan-report.txt
+          --format table \
+          --severity HIGH,CRITICAL \
+          --ignore-unfixed \
+          --exit-code 0 > client-trivy-scan-report.txt
     
       - name: upload build Vulnerabilities Json
         uses: actions/upload-artifact@v7
