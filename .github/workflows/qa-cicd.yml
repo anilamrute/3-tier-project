@@ -138,6 +138,7 @@ jobs:
           scan-type: 'fs'
           scan-ref: './client'
           format: 'table'
+          output: 'client-trivy-scan-report.txt'
           severity: 'HIGH,CRITICAL'
           scanners: 'vuln'
   
