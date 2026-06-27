@@ -53,8 +53,8 @@ jobs:
             --framework terraform \
             --output json > checkov-terraform.json || true 
 
-      - run: upload  Checkov Terraform-Scan
-      - uses: actions/upload-artifact@v7
+      - name: upload  Checkov Terraform-Scan
+        uses: actions/upload-artifact@v7
         with:
           name: terraform report
           path: checkov-terraform.json
@@ -80,8 +80,8 @@ jobs:
             --framework kubernetes \
             --output json > checkov-kubernetes.json || true 
 
-      - run: upload  Checkov Kubernetes-Scan
-      - uses: actions/upload-artifact@v7
+      - name: upload  Checkov Kubernetes-Scan
+        uses: actions/upload-artifact@v7
         with:
           name: kubernetes report
           path: checkov-kubernetes.json
@@ -107,8 +107,8 @@ jobs:
             --framework docker \
             --output json > checkov-docker.json || true 
 
-      - run: upload  Checkov docker-Scan
-      - uses: actions/upload-artifact@v7
+      - name: upload  Checkov docker-Scan
+        uses: actions/upload-artifact@v7
         with:
           name: docker report
           path: checkov-docker.json
