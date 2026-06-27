@@ -153,14 +153,14 @@ jobs:
             --exit-code 1 > client-trivy-scan-report.txt
   
       - name: Upload JSON report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: client-trivy-report-json
           path: client-trivy-scan-report.json
           if-no-files-found: warn
   
       - name: Upload table report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: client-trivy-report-table
           path: client-trivy-scan-report.txt
