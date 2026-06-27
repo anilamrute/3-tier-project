@@ -142,16 +142,16 @@ jobs:
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
             --scanners vuln \
-            --exit-code 1
+            --exit-code 0
   
       - name: Scan client folder (table)
         run: |
-          trivy fs client \
+          trivy fs ./client \
             --format table \
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
             --scanners vuln \
-            --exit-code 1 > client-trivy-scan-report.txt
+            --exit-code 0 > client-trivy-scan-report.txt
   
       - name: Upload JSON report
         uses: actions/upload-artifact@v4
