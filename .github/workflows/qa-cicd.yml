@@ -144,11 +144,11 @@ jobs:
 
       - name: Fail build on High/Criticial Vulnerabilities Table
         run: |
-         trivy fs ./client \
-          --format table \
-          --severity HIGH,CRITICAL \
-          --ignore-unfixed \
-          --exit-code 0 > client-trivy-scan-report.txt
+          trivy fs ./client \
+            --format table \
+            --severity HIGH,CRITICAL \
+            --ignore-unfixed \
+            --exit-code 0 > client-trivy-scan-report.txt
     
       - name: upload build Vulnerabilities Json
         uses: actions/upload-artifact@v7
