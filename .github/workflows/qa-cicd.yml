@@ -132,10 +132,11 @@ jobs:
         run: |
           trivy --version
           which trivy
-  
+          ls -la client/  # Verify client directory exists
+
       - name: Scan client folder (JSON)
         run: |
-          trivy fs client \
+          trivy fs ./client \
             --format json \
             --output client-trivy-scan-report.json \
             --severity HIGH,CRITICAL \
