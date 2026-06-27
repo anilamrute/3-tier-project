@@ -122,36 +122,24 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
   
-      - name: Install Trivy
+      - name: Run Trivy filesystem scan on client folder (JSON)
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          version: latest
-          cache: true
+          scan-type: 'fs'
+          scan-ref: './client'
+          format: 'json'
+          output: 'client-trivy-scan-report.json'
+          severity: 'HIGH,CRITICAL'
+          scanners: 'vuln'
   
-      - name: Verify Trivy Installation
-        run: |
-          trivy --version
-          which trivy
-          ls -la client/  # Verify client directory exists
-
-      - name: Scan client folder (JSON)
-        run: |
-          trivy fs ./client \
-            --format json \
-            --output client-trivy-scan-report.json \
-            --severity HIGH,CRITICAL \
-            --ignore-unfixed \
-            --scanners vuln \
-            --exit-code 0
-  
-      - name: Scan client folder (table)
-        run: |
-          trivy fs ./client \
-            --format table \
-            --severity HIGH,CRITICAL \
-            --ignore-unfixed \
-            --scanners vuln \
-            --exit-code 0 > client-trivy-scan-report.txt
+      - name: Run Trivy filesystem scan on client folder (table)
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: 'fs'
+          scan-ref: './client'
+          format: 'table'
+          severity: 'HIGH,CRITICAL'
+          scanners: 'vuln'
   
       - name: Upload JSON report
         uses: actions/upload-artifact@v4
