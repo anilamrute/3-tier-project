@@ -26,7 +26,7 @@ jobs:
             --redact \
             --exit-code 0
 
-      - run: upload build artifact
+      - run: Upload Build Artifact
       - uses: actions/upload-artifact@v7
         with:
           name: gitleaks report
