@@ -26,8 +26,8 @@ jobs:
             --redact \
             --exit-code 0
 
-      - run: Upload Build Artifact
-      - uses: actions/upload-artifact@v7
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v7
         with:
           name: gitleaks report
           path: gitleaks-report.json
