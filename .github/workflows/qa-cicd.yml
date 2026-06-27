@@ -150,4 +150,16 @@ jobs:
           --ignore-unfixed: true \
           --exit-code: 0 > client-trivy-scan-report.txt
     
+      - name: upload build Vulnerabilities Json
+        uses: actions/upload-artifact@v7
+        with:
+          name: client-trivy report
+          path: client-trivy-scan-report.json
+          if-no-files-found: warn 
 
+      - name: upload build Vulnerabilities Table
+        uses: actions/upload-artifact@v7
+        with:
+          name: client-trivy report
+          path: client-trivy-scan-report.txt
+          if-no-files-found: warn
