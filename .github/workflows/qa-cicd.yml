@@ -26,7 +26,12 @@ jobs:
           --redact \
           --exit-code 0
 
-
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: Gitleaks Artifacts
+          path: gitleaks-report.json
+          if-no-files-found: warn
          
 
     
