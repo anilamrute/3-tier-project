@@ -135,7 +135,7 @@ jobs:
 
       - name: Fail build on High/Criticial Vulnerabilities Json
         run: |
-          --trivy fs ./client \
+         trivy fs ./client \
           --format: json \
           --output: client-trivy-scan-report.json
           --severity: HIGH,CRITICAL \
@@ -144,7 +144,7 @@ jobs:
 
       - name: Fail build on High/Criticial Vulnerabilities Table
         run: |
-          --trivy fs ./client \
+         trivy fs ./client \
           --format: table \
           --severity: HIGH,CRITICAL \
           --ignore-unfixed: true \
