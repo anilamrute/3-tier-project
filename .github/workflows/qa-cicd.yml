@@ -113,5 +113,3 @@ jobs:
           path: checkov-docker.json
           if-no-files-found: warn       
   
-  
-  
