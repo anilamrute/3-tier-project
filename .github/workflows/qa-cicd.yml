@@ -197,3 +197,33 @@ jobs:
             name: server-trivy-report-table
             path: server-trivy-scan-report.txt
             if-no-files-found: warn
+  client-lint:
+    name: Client Lint
+    runs-on: ubuntu-latest
+    needs:
+      - client-trivy
+      - checkov-k8s
+      - checkov-docker
+      - checkov-terraform
+
+    defaults:
+      run:
+        working-directory: client
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install client dependencies
+        run: npm ci
+
+      - name: Run client lint
+        run: npm run lint --if-present
+        continue-on-error: true
